@@ -4,6 +4,8 @@ import logging
 from kombu.common import maybe_declare
 from amqp import AccessRefused
 from flask import Response
+import requests
+import json
 
 
 def setup_incoming(hostname):
@@ -69,6 +71,11 @@ def extract_charge_records(data):
 def get_iopn_records(data):
     records = extract_ownership_records(data)
     records += extract_charge_records(data)
+
+    url = app.config['SEARCH_API_URI'] + '/entry'
+    headers = {'Content-Type': 'application/json'}
+    response = requests.post(url, data=json.dumps(records), headers=headers)
+    # TODO: Check response
     print(records)
     return records
 
