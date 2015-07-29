@@ -36,8 +36,47 @@ def setup_error_queue(hostname):
     return connection, producer
 
 
+def extract_ownership_records(data):
+    office = data['data']['dlr']
+    title_no = data['data']['title_number']
+    sub_reg = 'Proprietorship'
+    name_type = 'Standard'
+
+    records = []
+    for group in (g for g in data['data']['groups'] if g['category'] == 'OWNERSHIP'):
+        for entry in group['entries']:
+            if entry['role_code'] == 'RPRO' and entry['status'] == 'Current':
+                proprietors = entry['infills'][0]['proprietors']  # TODO: unsafe assumption?
+                for proprietor in proprietors:
+                    name = proprietor['name']
+                    if name['name_category'] == 'PRIVATE INDIVIDUAL':
+                        prop_name = "{} {}".format(name['forename'], name['surname'])
+                        records.append({
+                            'title_number': title_no,
+                            'registered_proprietor': prop_name,
+                            'office': office,
+                            'sub_register': sub_reg,
+                            'name_type': name_type
+                        })
+    return records
+
+
+def extract_charge_records(data):
+    # TODO: Get some data created by the legacy systems
+    return []
+
+
+def get_iopn_records(data):
+    records = extract_ownership_records(data)
+    records += extract_charge_records(data)
+    print(records)
+    return records
+
+
 def message_received(body, message):
     logging.info("Received new registrations: {}".format(str(body)))
+    get_iopn_records(body)
+    message.ack()
 
 
 def listen(incoming_connection, error_producer, run_forever=True):
