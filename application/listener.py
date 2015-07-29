@@ -8,6 +8,14 @@ import requests
 import json
 
 
+class NamesError(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
+
 def setup_incoming(hostname):
     connection = kombu.Connection(hostname=hostname)
     connection.connect()
@@ -75,7 +83,10 @@ def get_iopn_records(data):
     url = app.config['SEARCH_API_URI'] + '/entry'
     headers = {'Content-Type': 'application/json'}
     response = requests.post(url, data=json.dumps(records), headers=headers)
-    # TODO: Check response
+
+    if response.status_code != 201:
+        raise NamesError("Search API non-201 response: {}".format(response.status_code))
+
     print(records)
     return records
 
@@ -95,7 +106,12 @@ def listen(incoming_connection, error_producer, run_forever=True):
         except KeyboardInterrupt:
             logging.info("Interrupted")
             break
-
+        except Exception as e:
+            error = {
+                'exception_class': type(e).__name__,
+                'error_message': str(e)
+            }
+            error_producer.put(error)
         if not run_forever:
             break
 
