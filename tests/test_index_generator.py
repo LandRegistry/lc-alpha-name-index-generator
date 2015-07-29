@@ -30,10 +30,6 @@ class TestWorking:
             return function(self, mock_consumer, mock_exchange, mock_declare, mock_connection)
         return wrapped
 
-    # @mock.patch('kombu.Connection', return_value=FakeConnection())
-    # @mock.patch('kombu.common.maybe_declare')
-    # @mock.patch('kombu.Exchange', return_value=FakeExchange())
-    # @mock.patch('kombu.Consumer', return_value=FakeConsumer())
     @mock_kombu
     def test_health_check(self, mock_consumer, mock_exchange, mock_declare, mock_connection):
         response = self.app.get("/")
@@ -59,7 +55,7 @@ class TestWorking:
         assert excinfo.value.value == "Search API non-201 response: 500"
 
     @mock_kombu
-    def test_exception_handled(self,  mock_consumer, mock_exchange, mock_declare, mock_connection):
+    def test_exception_handled(self, mock_consumer, mock_exchange, mock_declare, mock_connection):
         queue = FakeQueue()
         listen(FakeFailingConnection(), queue, False)
         assert queue.data['exception_class'] == "NamesError"
