@@ -1,0 +1,52 @@
+{
+  "data": {
+    "title_number": "LK31302",
+    "tenure": "Freehold",
+    "dlr": "Peytonland Office",
+    "groups": [
+      {
+        "category": "OWNERSHIP",
+        "entries": [
+          {
+            "entry_id": "2014-01-01 18:01:00.987654",
+            "language": "ENG",
+            "entry_date": "2014-01-01",
+            "role_code": "RPRO",
+            "sequence_number": 1,
+            "sub_register": "B",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "name_category": "PRIVATE INDIVIDUAL",
+                      "forename": "Murl Lenora",
+                      "surname": "Ullrich"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Kautzerside",
+                        "house_no": "71199",
+                        "street_name": "Lind Rapid",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "71199 Lind Rapid, Kautzerside, Buckinghamshire ER66 8TA",
+                        "postal_county": "Buckinghamshire",
+                        "postcode": "ER66 8TA"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Proprietor"
+              }
+            ],
+            "status": "Current",
+            "template_text": "PROPRIETOR => *RP*",
+            "full_text": "PROPRIETOR => MURL LENORA ULLRICH of 71199 Lind Rapid, Kautzerside, Buckinghamshire ER66 8TA.",
+            "category": "OWNERSHIP"
+          }
+        ]
+      }
+    ]
+  }
+}
