@@ -3,7 +3,8 @@ from application.listener import app, get_iopn_records, NamesError, listen
 from unittest import mock
 import os
 import json
-from tests.fake_kombu import FakeConnection, FakeExchange, FakeConsumer, FakeQueue, FakeFailingConnection
+from tests.fake_kombu import FakeConnection, FakeExchange, FakeConsumer, FakeQueue, FakeFailingConnection, \
+                             FakeWorkingConnection
 
 
 class FakeResponse(object):
@@ -59,3 +60,17 @@ class TestWorking:
         queue = FakeQueue()
         listen(FakeFailingConnection(), queue, False)
         assert queue.data['exception_class'] == "NamesError"
+
+    @mock_kombu
+    @mock.patch('requests.post', return_value=FakeResponse(status_code=201))
+    def test_subscribe_and_send_on(self, mock_consumer, mock_exchange, mock_declare, mock_connection, mock_post):
+        conn = FakeWorkingConnection(single_PI_proprietor)
+        listen(conn, FakeQueue(), False)
+        assert mock_post.call_count == 1
+        name, args, kwargs = mock_post.mock_calls[0]
+        data = json.loads(kwargs['data'])
+        assert data[0]['title_number'] == 'LK31302'
+        assert data[0]['registered_proprietor'] == 'Murl Lenora Ullrich'
+        assert data[0]['office'] == 'Peytonland Office'
+        assert data[0]['sub_register'] == 'Proprietorship'
+        assert data[0]['name_type'] == 'Standard'

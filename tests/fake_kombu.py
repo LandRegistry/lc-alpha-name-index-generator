@@ -1,4 +1,4 @@
-from application.listener import NamesError
+from application.listener import NamesError, message_received
 
 
 class FakeConnection(object):
@@ -16,6 +16,24 @@ class FakeConnection(object):
 
     def channel(self):
         return FakeChannel()
+
+
+class FakeMessage(object):
+    def __init__(self, data):
+        self.acked = False
+        self.data = data
+
+    def ack(self):
+        self.acked = True
+
+
+class FakeWorkingConnection(FakeConnection):
+    def __init__(self, fake_data):
+        self.fake_message = FakeMessage(fake_data)
+
+    def drain_events(self):
+        message_received(self.fake_message.data, self.fake_message)
+        pass
 
 
 class FakeFailingConnection(object):
