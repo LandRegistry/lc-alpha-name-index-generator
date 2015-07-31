@@ -30,13 +30,9 @@ def setup_incoming(hostname):
         queue.declare()
     except AccessRefused:
         logging.error("Access Refused")
-    # logging.debug("queue name, exchange, binding_key: {}, {}, {}".format(queue.name, queue.exchange, queue.routing_key))
 
     consumer = kombu.Consumer(channel, queues=queue, callbacks=[message_received], accept=['json'])
     consumer.consume()
-
-    # logging.debug('channel_id: {}'.format(consumer.channel.channel_id))
-    # logging.debug('queue(s): {}'.format(consumer.queues))
     return connection, consumer
 
 
@@ -46,34 +42,70 @@ def setup_error_queue(hostname):
     return connection, producer
 
 
+def extract_name(proprietor):
+    name = proprietor['name']
+    prop_name = {'forenames': [], 'surname': '', 'full_name': ''}
+
+    if 'name_category' in name:
+        if name['name_category'] == 'PRIVATE INDIVIDUAL':
+            prop_name['forenames'] = name['forename'].split()
+            prop_name['surname'] = name['surname']
+            prop_name['full_name'] = "{} {}".format(name['forename'], name['surname'])
+            prop_type = 'Private'
+        elif name['name_category'] == 'LIMITED COMPANY OR PUBLIC LIMITED COMPANY':
+            prop_name['full_name'] = name['non_private_individual_name']
+            prop_type = 'Non-Private'
+        # Have seen example with no category
+    elif 'non_private_individual_name' in name:
+        prop_name['full_name'] = name['non_private_individual_name']
+        prop_type = 'Non-Private'
+    else:
+        raise NamesError("Unable to parse name from {}".format(json.dumps(proprietor)))
+    return prop_name, prop_type
+
+
 def extract_ownership_records(data):
     office = data['data']['dlr']
     title_no = data['data']['title_number']
     sub_reg = 'Proprietorship'
-    name_type = 'Standard'
 
     records = []
     for group in (g for g in data['data']['groups'] if g['category'] == 'OWNERSHIP'):
-        for entry in group['entries']:
-            if entry['role_code'] == 'RPRO' and entry['status'] == 'Current':
-                proprietors = entry['infills'][0]['proprietors']  # TODO: unsafe assumption?
+        for entry in (e for e in group['entries'] if e['role_code'] == 'RPRO' and e['status'] == 'Current'):
+            for infill in (i for i in entry['infills'] if i['type'] == 'Proprietor'):
+                proprietors = infill['proprietors']
                 for proprietor in proprietors:
-                    name = proprietor['name']
-                    if name['name_category'] == 'PRIVATE INDIVIDUAL':
-                        prop_name = "{} {}".format(name['forename'], name['surname'])
-                        records.append({
-                            'title_number': title_no,
-                            'registered_proprietor': prop_name,
-                            'office': office,
-                            'sub_register': sub_reg,
-                            'name_type': name_type
-                        })
+                    prop_name, prop_type = extract_name(proprietor)
+                    records.append({
+                        'title_number': title_no,
+                        'registered_proprietor': prop_name,
+                        'office': office,
+                        'sub_register': sub_reg,
+                        'name_type': prop_type
+                    })
     return records
 
 
 def extract_charge_records(data):
     # TODO: Get some data created by the legacy systems
-    return []
+    office = data['data']['dlr']
+    title_no = data['data']['title_number']
+    sub_reg = 'Charge'
+
+    records = []
+    for group in (g for g in data['data']['groups'] if g['category'] == 'CHARGE'):
+        for entry in (e for e in group['entries'] if e['role_code'] == 'CCHR' and e['status'] == 'Current'):
+            for infill in (i for i in entry['infills'] if i['type'] == 'Charge Proprietor'):
+                for proprietor in infill['proprietors']:
+                    prop_name, prop_type = extract_name(proprietor)
+                    records.append({
+                        'title_number': title_no,
+                        'registered_proprietor': prop_name,
+                        'office': office,
+                        'sub_register': sub_reg,
+                        'name_type': prop_type
+                    })
+    return records
 
 
 def get_iopn_records(data):
