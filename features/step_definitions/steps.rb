@@ -27,16 +27,19 @@ Before do |scenario|
     if scenario.name == "New Registers are Converted & Added to Names-Search"
         response = elastic_search('{"query": {"match": {"title_number": "ST44730"}}}')
         data = JSON.parse(response.body)
-        data['hits']['hits'].each do |hit|
-            id = hit['_id']
-            delete_item(id)
-            puts "deleted #{id}"
+        
+        if response.code == "200"
+            data['hits']['hits'].each do |hit|
+                id = hit['_id']
+                delete_item(id)
+                puts "deleted #{id}"
+            end
         end
     end
 end
 
 Given(/^new data is posted to the queue$/) do
-    `vagrant ssh -c "python3 /vagrant/apps/name-index-generator/fire_at_queue.py /vagrant/apps/name-index-generator/reg2.json"`
+    `vagrant ssh -c "act name-index-generator;python3 /vagrant/apps/name-index-generator/fire_at_queue.py /vagrant/apps/name-index-generator/reg2.json"`
 end
 
 When(/^the system runs$/) do
