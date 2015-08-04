@@ -1,0 +1,52 @@
+{
+  "data": {
+    "title_number": "ST44730",
+    "tenure": "Freehold",
+    "dlr": "Kaden Office",
+    "groups": [
+      {
+        "category": "OWNERSHIP",
+        "entries": [
+          {
+            "entry_id": "2014-01-01 18:01:00.987654",
+            "language": "ENG",
+            "entry_date": "2014-01-01",
+            "role_code": "RPRO",
+            "sequence_number": 1,
+            "sub_register": "B",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "name_category": "PRIVATE INDIVIDUAL",
+                      "forename": "Raina Laurie",
+                      "surname": "Zieme"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Lake Susannaland",
+                        "house_no": "672",
+                        "street_name": "Annetta Pines",
+                        "address_type": "UK",
+                        "local_name": "East Jabarifurt",
+                        "address_string": "672 Annetta Pines, East Jabarifurt, Lake Susannaland, Worcestershire QX64 6JY",
+                        "postal_county": "Worcestershire",
+                        "postcode": "QX64 6JY"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Proprietor"
+              }
+            ],
+            "status": "Current",
+            "template_text": "PROPRIETOR => *RP*",
+            "full_text": "PROPRIETOR => RAINA LAURIE ZIEME of 672 Annetta Pines, East Jabarifurt, Lake Susannaland, Worcestershire QX64 6JY.",
+            "category": "OWNERSHIP"
+          }
+        ]
+      }
+    ]
+  }
+}
