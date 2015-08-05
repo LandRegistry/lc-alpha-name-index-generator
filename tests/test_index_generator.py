@@ -16,6 +16,7 @@ class FakeResponse(object):
 
 directory = os.path.dirname(__file__)
 single_PI_proprietor = json.loads(open(os.path.join(directory, 'data/single_PI_proprietor.json'), 'r').read())
+has_charge = json.loads(open(os.path.join(directory, 'data/simple_PI_has_charge.json'), 'r').read())
 
 
 class TestWorking:
@@ -49,6 +50,21 @@ class TestWorking:
         assert output[0]['office'] == 'Peytonland Office'
         assert output[0]['sub_register'] == 'Proprietorship'
         assert output[0]['name_type'] == 'Private'
+
+    @mock_kombu
+    @mock.patch('requests.post', return_value=FakeResponse(status_code=201))
+    def test_simple_charge_conversion(self, mock_post, mock_consumer, mock_exchange, mock_declare, mock_connection):
+        output = get_iopn_records(has_charge)
+        assert len(output) == 2
+        assert output[0]['title_number'] == 'TR123456'
+        assert output[1]['title_number'] == 'TR123456'
+        assert output[0]['registered_proprietor']['surname'] == 'HOWARD'
+        assert output[0]['registered_proprietor']['forenames'][0] == 'BOB'
+        assert output[1]['registered_proprietor']['full_name'] == 'High Street Bank PLC'
+        assert output[0]['sub_register'] == 'Proprietorship'
+        assert output[1]['sub_register'] == 'Charge'
+        assert output[0]['name_type'] == 'Private'
+        assert output[1]['name_type'] == 'Non-Private'
 
     @mock_kombu
     @mock.patch('requests.post', return_value=FakeResponse(status_code=500))
