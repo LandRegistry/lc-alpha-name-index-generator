@@ -10,6 +10,7 @@ import json
 class NamesError(Exception):
     def __init__(self, value):
         self.value = value
+        super(NamesError, self).__init__(value)
 
     def __str__(self):
         return repr(self.value)
@@ -38,7 +39,7 @@ def setup_incoming(hostname):
 def setup_error_queue(hostname):
     connection = kombu.Connection(hostname=hostname)
     producer = connection.SimpleQueue('names_error')
-    return connection, producer
+    return producer
 
 
 def extract_name(proprietor):
@@ -113,17 +114,19 @@ def get_iopn_records(data):
 
     url = app.config['SEARCH_API_URI'] + '/entry'
     headers = {'Content-Type': 'application/json'}
+
+    logging.info('%s POST', url)
     response = requests.post(url, data=json.dumps(records), headers=headers)
+    logging.info('%s response %d', url, response.status_code)
 
     if response.status_code != 201:
         raise NamesError("Search API non-201 response: {}".format(response.status_code))
 
-    print(records)
     return records
 
 
 def message_received(body, message):
-    logging.info("Received new registrations: {}".format(str(body)))
+    logging.info("Received new registrations: %s", str(body))
     get_iopn_records(body)
     message.ack()
 
@@ -137,10 +140,11 @@ def listen(incoming_connection, error_producer, run_forever=True):
         except KeyboardInterrupt:
             logging.info("Interrupted")
             break
-        except Exception as e:
+        except Exception as exception:
+            logging.error('Exception %s: %s', type(exception).__name__, str(exception))
             error = {
-                'exception_class': type(e).__name__,
-                'error_message': str(e)
+                'exception_class': type(exception).__name__,
+                'error_message': str(exception)
             }
             error_producer.put(error)
         if not run_forever:
@@ -151,7 +155,7 @@ def run():
     hostname = "amqp://{}:{}@{}:{}".format(app.config['MQ_USERNAME'], app.config['MQ_PASSWORD'],
                                            app.config['MQ_HOSTNAME'], app.config['MQ_PORT'])
     incoming_connection, incoming_consumer = setup_incoming(hostname)
-    error_connection, error_producer = setup_error_queue(hostname)
+    error_producer = setup_error_queue(hostname)
 
     listen(incoming_connection, error_producer)
     incoming_consumer.close()
