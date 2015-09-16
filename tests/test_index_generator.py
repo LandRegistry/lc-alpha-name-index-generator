@@ -4,7 +4,7 @@ from unittest import mock
 import os
 import json
 from tests.fake_kombu import FakeConnection, FakeExchange, FakeConsumer, FakeQueue, FakeFailingConnection, \
-                             FakeWorkingConnection
+    FakeWorkingConnection
 
 
 class FakeResponse(object):
@@ -30,6 +30,7 @@ class TestWorking:
         @mock.patch('kombu.Consumer', return_value=FakeConsumer())
         def wrapped(self, mock_consumer, mock_exchange, mock_declare, mock_connection):
             return function(self, mock_consumer, mock_exchange, mock_declare, mock_connection)
+
         return wrapped
 
     @mock_kombu
@@ -68,7 +69,8 @@ class TestWorking:
 
     @mock_kombu
     @mock.patch('requests.post', return_value=FakeResponse(status_code=500))
-    def test_simple_proprietor_conversion_insert_failed(self, mock_post, mock_consumer, mock_exchange, mock_declare, mock_connection):
+    def test_simple_proprietor_conversion_insert_failed(self, mock_post, mock_consumer, mock_exchange, mock_declare,
+                                                        mock_connection):
         with pytest.raises(NamesError) as excinfo:
             get_iopn_records(single_PI_proprietor)
         print(excinfo.value.value)

@@ -22,5 +22,3 @@ data = json.loads(open(filename, 'r').read())
 connection, queue = setup_queue("amqp://mquser:mqpassword@localhost:5672")
 queue.put(data)
 queue.close()
-
-
