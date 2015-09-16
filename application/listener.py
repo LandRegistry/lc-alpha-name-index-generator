@@ -1,9 +1,8 @@
-from application import app
+from application.routes import app
 import kombu
 import logging
 from kombu.common import maybe_declare
 from amqp import AccessRefused
-from flask import Response
 import requests
 import json
 
@@ -156,8 +155,3 @@ def run():
 
     listen(incoming_connection, error_producer)
     incoming_consumer.close()
-
-
-@app.route('/', methods=["GET"])
-def index():
-    return Response(status=200)
