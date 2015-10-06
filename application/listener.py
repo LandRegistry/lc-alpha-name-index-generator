@@ -1,5 +1,6 @@
 from application.routes import app
 import kombu
+import socket
 import logging
 from kombu.common import maybe_declare
 from amqp import AccessRefused
@@ -140,13 +141,21 @@ def listen(incoming_connection, error_producer, run_forever=True):
         except KeyboardInterrupt:
             logging.info("Interrupted")
             break
-        except Exception as exception:
+        except socket.error as exception:
             logging.error('Exception %s: %s', type(exception).__name__, str(exception))
             error = {
                 'exception_class': type(exception).__name__,
                 'error_message': str(exception)
             }
             error_producer.put(error)
+        except socket.timeout as exception:
+            logging.error('Exception %s: %s', type(exception).__name__, str(exception))
+            error = {
+                'exception_class': type(exception).__name__,
+                'error_message': str(exception)
+            }
+            error_producer.put(error)
+
         if not run_forever:
             break
 
