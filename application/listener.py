@@ -141,7 +141,7 @@ def listen(incoming_connection, error_producer, run_forever=True):
         except KeyboardInterrupt:
             logging.info("Interrupted")
             break
-        except NamesError as exception:
+        except socket.error as exception:
             logging.error('Exception %s: %s', type(exception).__name__, str(exception))
             error = {
                 'exception_class': type(exception).__name__,
@@ -149,6 +149,13 @@ def listen(incoming_connection, error_producer, run_forever=True):
             }
             error_producer.put(error)
         except socket.timeout as exception:
+            logging.error('Exception %s: %s', type(exception).__name__, str(exception))
+            error = {
+                'exception_class': type(exception).__name__,
+                'error_message': str(exception)
+            }
+            error_producer.put(error)
+        except NamesError as exception:
             logging.error('Exception %s: %s', type(exception).__name__, str(exception))
             error = {
                 'exception_class': type(exception).__name__,
