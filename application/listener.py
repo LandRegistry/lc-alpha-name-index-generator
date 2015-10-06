@@ -158,7 +158,7 @@ def listen(incoming_connection, error_producer, run_forever=True):
 
         if not run_forever:
             break
-            
+
 
 def run():
     hostname = "amqp://{}:{}@{}:{}".format(app.config['MQ_USERNAME'], app.config['MQ_PASSWORD'],
