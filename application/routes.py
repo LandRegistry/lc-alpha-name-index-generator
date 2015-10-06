@@ -8,7 +8,6 @@ app.config.from_object(os.getenv('SETTINGS', "config.DevelopmentConfig"))
 
 setup_logging(app.config['DEBUG'])
 
-
 @app.route('/', methods=["GET"])
 def index():
     return Response(status=200)
