@@ -17,7 +17,7 @@ class NamesError(Exception):
         return repr(self.value)
 
 
-def setup_incoming(hostname):
+def setup_incoming(hostname): # pragma: no cover
     connection = kombu.Connection(hostname=hostname)
     connection.connect()
     exchange = kombu.Exchange(type="direct", name="register_queue")
