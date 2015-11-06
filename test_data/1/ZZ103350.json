@@ -1,0 +1,87 @@
+{
+  "data": {
+    "title_number": "ZZ103350",
+    "tenure": "Freehold",
+    "dlr": "A Land Registry Office",
+    "groups": [
+      {
+        "category": "OWNERSHIP",
+        "entries": [
+          {
+            "entry_id": "2014-01-01 18:01:00.987654",
+            "language": "ENG",
+            "entry_date": "2014-01-01",
+            "role_code": "RPRO",
+            "sequence_number": 1,
+            "sub_register": "B",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "forename": "Tia Meagan",
+                      "surname": "Waters",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Port Marc",
+                        "house_no": "57",
+                        "street_name": "Dickinson Crescent",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Cambridgeshire",
+                        "postcode": "XA52 7GC"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Proprietor"
+              }
+            ],
+            "status": "Current",
+            "template_text": "PROPRIETOR => *RP*",
+            "full_text": "",
+            "category": "OWNERSHIP"
+          }
+        ]
+      },
+      {
+        "category": "CHARGE",
+        "entries": [
+          {
+            "sub_register": "C",
+            "role_code": "CCHR",
+            "category": "CHARGE",
+            "status": "Current",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "non_private_individual_name": "Trustplex"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Douglastown",
+                        "house_no": "18",
+                        "street_name": "Keira Circle",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Flintshire",
+                        "postcode": "IR31 1AH"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Charge Proprietor"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

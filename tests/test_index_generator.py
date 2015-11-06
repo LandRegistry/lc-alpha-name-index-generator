@@ -12,11 +12,14 @@ class FakeResponse(object):
         super(FakeResponse, self).__init__()
         self.data = content
         self.status_code = status_code
+        self.reason = 'OK'
+        self.content = b'{"dependencies": []}'
 
 
 directory = os.path.dirname(__file__)
 single_PI_proprietor = json.loads(open(os.path.join(directory, 'data/single_PI_proprietor.json'), 'r').read())
 has_charge = json.loads(open(os.path.join(directory, 'data/simple_PI_has_charge.json'), 'r').read())
+complex_name = json.loads(open(os.path.join(directory, 'data/complex-name.json'), 'r').read())
 
 
 class TestWorking:
@@ -37,6 +40,13 @@ class TestWorking:
     def test_health_check(self, mock_consumer, mock_exchange, mock_declare, mock_connection):
         response = self.app.get("/")
         assert response.status_code == 200
+
+    @mock_kombu
+    @mock.patch('requests.get', return_value=FakeResponse(status_code=201))
+    def test_health_check_2(self, get, mock_consumer, mock_exchange, mock_declare, mock_connection):
+        response = self.app.get("/health")
+        assert response.status_code == 200
+
 
     @mock_kombu
     @mock.patch('requests.post', return_value=FakeResponse(status_code=201))
@@ -98,3 +108,15 @@ class TestWorking:
         assert data[0]['office'] == 'Peytonland Office'
         assert data[0]['sub_register'] == 'Proprietorship'
         assert data[0]['name_type'] == 'Private'
+
+    @mock_kombu
+    @mock.patch('requests.post', return_value=FakeResponse(status_code=201))
+    def test_complex_name_conversion(self, mock_post, mock_consumer, mock_exchange, mock_declare, mock_connection):
+        output = get_iopn_records(complex_name)
+        assert len(output) == 1
+        assert output[0]['title_number'] == 'ZZ118105'
+        assert output[0]['registered_proprietor']['surname'] == 'Stark'
+        assert output[0]['registered_proprietor']['forenames'][0] == 'Robert'
+        assert output[0]['registered_proprietor']['full_name'] == 'His Royal Highness Robert Stark Lord of Winterfell and King in the North'
+        assert output[0]['sub_register'] == 'Proprietorship'
+        assert output[0]['name_type'] == 'Private'

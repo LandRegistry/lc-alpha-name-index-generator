@@ -1,0 +1,106 @@
+{
+  "data": {
+    "title_number": "ZZ416316",
+    "tenure": "Freehold",
+    "dlr": "A Land Registry Office",
+    "groups": [
+      {
+        "category": "OWNERSHIP",
+        "entries": [
+          {
+            "entry_id": "2014-01-01 18:01:00.987654",
+            "language": "ENG",
+            "entry_date": "2014-01-01",
+            "role_code": "RPRO",
+            "sequence_number": 1,
+            "sub_register": "B",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "forename": "Elody Micheal",
+                      "surname": "Monahan",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Mayerfurt",
+                        "house_no": "87",
+                        "street_name": "Adams Corner",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Herefordshire",
+                        "postcode": "PG30 8IS"
+                      }
+                    ]
+                  },
+                  {
+                    "name": {
+                      "forename": "Demarcus Theo",
+                      "surname": "Boyle",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Rohanberg",
+                        "house_no": "38",
+                        "street_name": "Kiehn Groves",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Cumbria",
+                        "postcode": "FU45 1VE"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Proprietor"
+              }
+            ],
+            "status": "Current",
+            "template_text": "PROPRIETOR => *RP*",
+            "full_text": "",
+            "category": "OWNERSHIP"
+          }
+        ]
+      },
+      {
+        "category": "CHARGE",
+        "entries": [
+          {
+            "sub_register": "C",
+            "role_code": "CCHR",
+            "category": "CHARGE",
+            "status": "Current",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "non_private_individual_name": "Bizquote"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Bechtelarfort",
+                        "house_no": "40",
+                        "street_name": "Kautzer Mountains",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Staffordshire",
+                        "postcode": "HP08 2DE"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Charge Proprietor"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

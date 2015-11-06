@@ -1,0 +1,90 @@
+{
+  "data": {
+    "title_number": "ZZ370937",
+    "tenure": "Freehold",
+    "dlr": "A Land Registry Office",
+    "groups": [
+      {
+        "category": "OWNERSHIP",
+        "entries": [
+          {
+            "entry_id": "2014-01-01 18:01:00.987654",
+            "language": "ENG",
+            "entry_date": "2014-01-01",
+            "role_code": "RPRO",
+            "sequence_number": 1,
+            "sub_register": "B",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "forename": "Marisa Lorenzo",
+                      "surname": "Robel",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Eltamouth",
+                        "house_no": "49",
+                        "street_name": "Upton Course",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Rhondda Cynon Taff",
+                        "postcode": "CP24 7DA"
+                      }
+                    ]
+                  },
+                  {
+                    "name": {
+                      "forename": "Greg Napoleon",
+                      "surname": "Kuhn",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "New Shane",
+                        "house_no": "62",
+                        "street_name": "Berge Land",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Swindon",
+                        "postcode": "CX02 4QK"
+                      }
+                    ]
+                  },
+                  {
+                    "name": {
+                      "forename": "Chandler",
+                      "surname": "Block",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Guillermoburgh",
+                        "house_no": "6",
+                        "street_name": "Torrey Parkways",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Suffolk",
+                        "postcode": "LA68 8EQ"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Proprietor"
+              }
+            ],
+            "status": "Current",
+            "template_text": "PROPRIETOR => *RP*",
+            "full_text": "",
+            "category": "OWNERSHIP"
+          }
+        ]
+      }
+    ]
+  }
+}

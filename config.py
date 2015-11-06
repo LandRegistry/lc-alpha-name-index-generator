@@ -10,7 +10,7 @@ class DevelopmentConfig(Config):
     MQ_PASSWORD = "mqpassword"
     MQ_HOSTNAME = "localhost"
     MQ_PORT = "5672"
-    SEARCH_API_URI = "http://localhost:5013"
+    NAMES_SEARCH_URI = "http://localhost:5013"
 
 
 class PreviewConfig(Config):
@@ -18,4 +18,4 @@ class PreviewConfig(Config):
     MQ_PASSWORD = "mqpassword"
     MQ_HOSTNAME = "localhost"
     MQ_PORT = "5672"
-    SEARCH_API_URI = "http://localhost:5013"
+    NAMES_SEARCH_URI = "http://localhost:5013"

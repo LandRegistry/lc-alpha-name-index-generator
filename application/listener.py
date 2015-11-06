@@ -53,9 +53,17 @@ def extract_name(proprietor):
             prop_name['surname'] = name['surname']
             prop_name['full_name'] = "{} {}".format(name['forename'], name['surname'])
             prop_type = 'Private'
+            if 'title' in name:
+                prop_name['title'] = name['title']
+                prop_name['full_name'] = " ".join([prop_name['title'], prop_name['full_name']])
+
+            if 'decoration' in name:
+                prop_name['decoration'] = name['decoration']
+                prop_name['full_name'] = " ".join([prop_name['full_name'], prop_name['decoration']])
+
         elif name['name_category'] == 'LIMITED COMPANY OR PUBLIC LIMITED COMPANY':
             prop_name['full_name'] = name['non_private_individual_name']
-            prop_type = 'Non-Private'
+            prop_type = 'Non-Private'  # TODO: don't really need non-PI names for April...
         # Have seen example with no category
     elif 'non_private_individual_name' in name:
         prop_name['full_name'] = name['non_private_individual_name']
@@ -113,7 +121,7 @@ def get_iopn_records(data):
     records = extract_ownership_records(data)
     records += extract_charge_records(data)
 
-    url = app.config['SEARCH_API_URI'] + '/entry'
+    url = app.config['NAMES_SEARCH_URI'] + '/names'
     headers = {'Content-Type': 'application/json'}
 
     logging.info('%s POST', url)
@@ -138,31 +146,16 @@ def listen(incoming_connection, error_producer, run_forever=True):
     while True:
         try:
             incoming_connection.drain_events()
-        except KeyboardInterrupt:
+        except KeyboardInterrupt:  # pragma: no cover
             logging.info("Interrupted")
             break
-        except socket.error as exception:
+        except (socket.error, socket.timeout, NamesError) as exception:  # pragma: no cover
             logging.error('Exception %s: %s', type(exception).__name__, str(exception))
             error = {
                 'exception_class': type(exception).__name__,
                 'error_message': str(exception)
             }
             error_producer.put(error)
-        except socket.timeout as exception:
-            logging.error('Exception %s: %s', type(exception).__name__, str(exception))
-            error = {
-                'exception_class': type(exception).__name__,
-                'error_message': str(exception)
-            }
-            error_producer.put(error)
-        except NamesError as exception:
-            logging.error('Exception %s: %s', type(exception).__name__, str(exception))
-            error = {
-                'exception_class': type(exception).__name__,
-                'error_message': str(exception)
-            }
-            error_producer.put(error)
-
         if not run_forever:
             break
 
