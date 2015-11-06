@@ -1,0 +1,71 @@
+{
+  "data": {
+    "title_number": "ZZ460348",
+    "tenure": "Freehold",
+    "dlr": "A Land Registry Office",
+    "groups": [
+      {
+        "category": "OWNERSHIP",
+        "entries": [
+          {
+            "entry_id": "2014-01-01 18:01:00.987654",
+            "language": "ENG",
+            "entry_date": "2014-01-01",
+            "role_code": "RPRO",
+            "sequence_number": 1,
+            "sub_register": "B",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "forename": "Ned Maudie",
+                      "surname": "White",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Elodyfort",
+                        "house_no": "9",
+                        "street_name": "Claudine Isle",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Cheshire West & Chester",
+                        "postcode": "HT54 3KD"
+                      }
+                    ]
+                  },
+                  {
+                    "name": {
+                      "forename": "Jensen Delia",
+                      "surname": "Mohr",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "North Ninashire",
+                        "house_no": "63",
+                        "street_name": "Bergnaum Route",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Swindon",
+                        "postcode": "QI42 3FB"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Proprietor"
+              }
+            ],
+            "status": "Current",
+            "template_text": "PROPRIETOR => *RP*",
+            "full_text": "",
+            "category": "OWNERSHIP"
+          }
+        ]
+      }
+    ]
+  }
+}

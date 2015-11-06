@@ -1,0 +1,85 @@
+{
+  "data": {
+    "title_number": "ZZ118104",
+    "tenure": "Freehold",
+    "dlr": "A Land Registry Office",
+    "groups": [
+      {
+        "category": "OWNERSHIP",
+        "entries": [
+          {
+            "entry_id": "2014-01-01 18:01:00.987654",
+            "language": "ENG",
+            "entry_date": "2014-01-01",
+            "role_code": "RPRO",
+            "sequence_number": 1,
+            "sub_register": "B",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "forename": "Patricia Chadrick Rachelle",
+                      "surname": "Mosciski",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Delphaview",
+                        "house_no": "19",
+                        "street_name": "Justus Isle",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Bracknell Forest",
+                        "postcode": "BU35 2CR"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Proprietor"
+              }
+            ],
+            "status": "Current",
+            "template_text": "PROPRIETOR => *RP*",
+            "full_text": "",
+            "category": "OWNERSHIP"
+          }
+        ]
+      },
+      {
+        "category": "CHARGE",
+        "entries": [
+          {
+            "sub_register": "C",
+            "role_code": "CCHR",
+            "category": "CHARGE",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "non_private_individual_name": "Trustplus"
+                    },
+                    "addresses": [
+                      {
+                        "town": "East Mandy",
+                        "house_no": "11",
+                        "street_name": "Crist Square",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Southampton",
+                        "postcode": "ON36 6AJ"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

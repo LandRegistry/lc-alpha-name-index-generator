@@ -1,0 +1,87 @@
+{
+  "data": {
+    "title_number": "ZZ560743",
+    "tenure": "Freehold",
+    "dlr": "A Land Registry Office",
+    "groups": [
+      {
+        "category": "OWNERSHIP",
+        "entries": [
+          {
+            "entry_id": "2014-01-01 18:01:00.987654",
+            "language": "ENG",
+            "entry_date": "2014-01-01",
+            "role_code": "RPRO",
+            "sequence_number": 1,
+            "sub_register": "B",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "forename": "Kristin Destini",
+                      "surname": "Muller",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Maurinemouth",
+                        "house_no": "24",
+                        "street_name": "Marvin Plains",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Rhondda Cynon Taff",
+                        "postcode": "TA55 2SG"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Proprietor"
+              }
+            ],
+            "status": "Current",
+            "template_text": "PROPRIETOR => *RP*",
+            "full_text": "",
+            "category": "OWNERSHIP"
+          }
+        ]
+      },
+      {
+        "category": "CHARGE",
+        "entries": [
+          {
+            "sub_register": "C",
+            "role_code": "CCHR",
+            "category": "CHARGE",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "forename": "Nova Ashly",
+                      "surname": "Thiel",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Feilhaven",
+                        "house_no": "87",
+                        "street_name": "Theresa Ways",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Cardiff",
+                        "postcode": "NR47 5WL"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

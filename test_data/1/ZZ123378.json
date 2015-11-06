@@ -1,0 +1,52 @@
+{
+  "data": {
+    "title_number": "ZZ123378",
+    "tenure": "Freehold",
+    "dlr": "A Land Registry Office",
+    "groups": [
+      {
+        "category": "OWNERSHIP",
+        "entries": [
+          {
+            "entry_id": "2014-01-01 18:01:00.987654",
+            "language": "ENG",
+            "entry_date": "2014-01-01",
+            "role_code": "RPRO",
+            "sequence_number": 1,
+            "sub_register": "B",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "forename": "Ruthe Angus",
+                      "surname": "Friesen",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "South Yasmeen",
+                        "house_no": "23",
+                        "street_name": "Okuneva Mills",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Buckinghamshire",
+                        "postcode": "LX61 6QA"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Proprietor"
+              }
+            ],
+            "status": "Current",
+            "template_text": "PROPRIETOR => *RP*",
+            "full_text": "",
+            "category": "OWNERSHIP"
+          }
+        ]
+      }
+    ]
+  }
+}

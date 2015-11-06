@@ -1,0 +1,104 @@
+{
+  "data": {
+    "title_number": "ZZ216205",
+    "tenure": "Freehold",
+    "dlr": "A Land Registry Office",
+    "groups": [
+      {
+        "category": "OWNERSHIP",
+        "entries": [
+          {
+            "entry_id": "2014-01-01 18:01:00.987654",
+            "language": "ENG",
+            "entry_date": "2014-01-01",
+            "role_code": "RPRO",
+            "sequence_number": 1,
+            "sub_register": "B",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "forename": "Leilani Will",
+                      "surname": "Kirlin",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Beattyport",
+                        "house_no": "39",
+                        "street_name": "Wuckert Spurs",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "North Somerset",
+                        "postcode": "LK67 8AD"
+                      }
+                    ]
+                  },
+                  {
+                    "name": {
+                      "forename": "Bethel Yasmine",
+                      "surname": "Howe",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "North Arturoview",
+                        "house_no": "91",
+                        "street_name": "Elva Tunnel",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Leicester",
+                        "postcode": "SX83 2FH"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Proprietor"
+              }
+            ],
+            "status": "Current",
+            "template_text": "PROPRIETOR => *RP*",
+            "full_text": "",
+            "category": "OWNERSHIP"
+          }
+        ]
+      },
+      {
+        "category": "CHARGE",
+        "entries": [
+          {
+            "sub_register": "C",
+            "role_code": "CCHR",
+            "category": "CHARGE",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "non_private_individual_name": "Indilabs"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Kipland",
+                        "house_no": "81",
+                        "street_name": "West Ports",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "County Durham",
+                        "postcode": "CA04 1WH"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "data": {
+    "title_number": "ZZ409270",
+    "tenure": "Freehold",
+    "dlr": "A Land Registry Office",
+    "groups": [
+      {
+        "category": "OWNERSHIP",
+        "entries": [
+          {
+            "entry_id": "2014-01-01 18:01:00.987654",
+            "language": "ENG",
+            "entry_date": "2014-01-01",
+            "role_code": "RPRO",
+            "sequence_number": 1,
+            "sub_register": "B",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "name": {
+                      "forename": "Vena Mazie",
+                      "surname": "Kassulke",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "Port Derrickshire",
+                        "house_no": "82",
+                        "street_name": "Larson Turnpike",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Wiltshire",
+                        "postcode": "NU73 5FX"
+                      }
+                    ]
+                  },
+                  {
+                    "name": {
+                      "forename": "Mario Katelynn",
+                      "surname": "Kemmer",
+                      "name_category": "PRIVATE INDIVIDUAL"
+                    },
+                    "addresses": [
+                      {
+                        "town": "North Alannaville",
+                        "house_no": "93",
+                        "street_name": "Anderson Oval",
+                        "address_type": "UK",
+                        "local_name": "",
+                        "address_string": "",
+                        "postal_county": "Derbyshire",
+                        "postcode": "GI60 2YD"
+                      }
+                    ]
+                  }
+                ],
+                "type": "Proprietor"
+              }
+            ],
+            "status": "Current",
+            "template_text": "PROPRIETOR => *RP*",
+            "full_text": "",
+            "category": "OWNERSHIP"
+          }
+        ]
+      }
+    ]
+  }
+}
