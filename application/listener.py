@@ -113,7 +113,7 @@ def get_iopn_records(data):
     records = extract_ownership_records(data)
     records += extract_charge_records(data)
 
-    url = app.config['SEARCH_API_URI'] + '/entry'
+    url = app.config['NAMES_SEARCH_URI'] + '/names'
     headers = {'Content-Type': 'application/json'}
 
     logging.info('%s POST', url)

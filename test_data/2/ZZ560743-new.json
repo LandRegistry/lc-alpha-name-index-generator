@@ -54,6 +54,7 @@
             "sub_register": "C",
             "role_code": "CCHR",
             "category": "CHARGE",
+            "status": "Current",
             "infills": [
               {
                 "proprietors": [
@@ -76,7 +77,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "Charge Proprietor"
               }
             ]
           }

@@ -1,6 +1,6 @@
 {
   "data": {
-    "title_number": "ZZ248329",
+    "title_number": "ZZ118105",
     "tenure": "Freehold",
     "dlr": "A Land Registry Office",
     "groups": [
@@ -19,39 +19,23 @@
                 "proprietors": [
                   {
                     "name": {
-                      "forename": "Sylvia Isaiah Milo",
-                      "surname": "Haag",
+                      "forename": "Robert",
+                      "title": "His Royal Highness",
+                      "name_information": "[not relevant]",
+                      "surname": "Stark",
+                      "decoration": "Lord of Winterfell and King in the North",
                       "name_category": "PRIVATE INDIVIDUAL"
                     },
                     "addresses": [
                       {
-                        "town": "Elvismouth",
-                        "house_no": "14",
-                        "street_name": "Tressa Circle",
+                        "town": "Delphaview",
+                        "house_no": "19",
+                        "street_name": "Justus Isle",
                         "address_type": "UK",
                         "local_name": "",
                         "address_string": "",
-                        "postal_county": "Cambridgeshire",
-                        "postcode": "PK45 6RD"
-                      }
-                    ]
-                  },
-                  {
-                    "name": {
-                      "forename": "Destinee Dusty",
-                      "surname": "Lakin",
-                      "name_category": "PRIVATE INDIVIDUAL"
-                    },
-                    "addresses": [
-                      {
-                        "town": "Runolfsdottirburgh",
-                        "house_no": "39",
-                        "street_name": "Rutherford Ranch",
-                        "address_type": "UK",
-                        "local_name": "",
-                        "address_string": "",
-                        "postal_county": "Gwynedd",
-                        "postcode": "LK82 4BU"
+                        "postal_county": "Bracknell Forest",
+                        "postcode": "BU35 2CR"
                       }
                     ]
                   }
@@ -79,20 +63,18 @@
                 "proprietors": [
                   {
                     "name": {
-                      "forename": "Wiley Alayna",
-                      "surname": "Lowe",
-                      "name_category": "PRIVATE INDIVIDUAL"
+                      "non_private_individual_name": "Trustplus"
                     },
                     "addresses": [
                       {
-                        "town": "Luettgenstad",
-                        "house_no": "31",
-                        "street_name": "Bahringer Cape",
+                        "town": "East Mandy",
+                        "house_no": "11",
+                        "street_name": "Crist Square",
                         "address_type": "UK",
                         "local_name": "",
                         "address_string": "",
-                        "postal_county": "Neath Port Talbot",
-                        "postcode": "HG45 8GD"
+                        "postal_county": "Southampton",
+                        "postcode": "ON36 6AJ"
                       }
                     ]
                   }
