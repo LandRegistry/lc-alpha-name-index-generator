@@ -146,31 +146,16 @@ def listen(incoming_connection, error_producer, run_forever=True):
     while True:
         try:
             incoming_connection.drain_events()
-        except KeyboardInterrupt:
+        except KeyboardInterrupt:  # pragma: no cover
             logging.info("Interrupted")
             break
-        except socket.error as exception:
+        except (socket.error, socket.timeout, NamesError) as exception:  # pragma: no cover
             logging.error('Exception %s: %s', type(exception).__name__, str(exception))
             error = {
                 'exception_class': type(exception).__name__,
                 'error_message': str(exception)
             }
             error_producer.put(error)
-        except socket.timeout as exception:
-            logging.error('Exception %s: %s', type(exception).__name__, str(exception))
-            error = {
-                'exception_class': type(exception).__name__,
-                'error_message': str(exception)
-            }
-            error_producer.put(error)
-        except NamesError as exception:
-            logging.error('Exception %s: %s', type(exception).__name__, str(exception))
-            error = {
-                'exception_class': type(exception).__name__,
-                'error_message': str(exception)
-            }
-            error_producer.put(error)
-
         if not run_forever:
             break
 

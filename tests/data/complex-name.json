@@ -1,8 +1,8 @@
 {
   "data": {
-    "title_number": "ST44730",
+    "title_number": "ZZ118105",
     "tenure": "Freehold",
-    "dlr": "Kaden Office",
+    "dlr": "A Land Registry Office",
     "groups": [
       {
         "category": "OWNERSHIP",
@@ -19,20 +19,14 @@
                 "proprietors": [
                   {
                     "name": {
-                      "name_category": "PRIVATE INDIVIDUAL",
-                      "forename": "Raina Laurie",
-                      "surname": "Zieme"
+                      "forename": "Robert",
+                      "title": "His Royal Highness",
+                      "surname": "Stark",
+                      "decoration": "Lord of Winterfell and King in the North",
+                      "name_category": "PRIVATE INDIVIDUAL"
                     },
                     "addresses": [
                       {
-                        "town": "Lake Susannaland",
-                        "house_no": "672",
-                        "street_name": "Annetta Pines",
-                        "address_type": "UK",
-                        "local_name": "East Jabarifurt",
-                        "address_string": "672 Annetta Pines, East Jabarifurt, Lake Susannaland, Worcestershire QX64 6JY",
-                        "postal_county": "Worcestershire",
-                        "postcode": "QX64 6JY"
                       }
                     ]
                   }
@@ -42,7 +36,7 @@
             ],
             "status": "Current",
             "template_text": "PROPRIETOR => *RP*",
-            "full_text": "PROPRIETOR => RAINA LAURIE ZIEME of 672 Annetta Pines, East Jabarifurt, Lake Susannaland, Worcestershire QX64 6JY.",
+            "full_text": "",
             "category": "OWNERSHIP"
           }
         ]
