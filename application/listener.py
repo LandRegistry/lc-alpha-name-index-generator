@@ -53,9 +53,17 @@ def extract_name(proprietor):
             prop_name['surname'] = name['surname']
             prop_name['full_name'] = "{} {}".format(name['forename'], name['surname'])
             prop_type = 'Private'
+            if 'title' in name:
+                prop_name['title'] = name['title']
+                prop_name['full_name'] = " ".join([prop_name['title'], prop_name['full_name']])
+
+            if 'decoration' in name:
+                prop_name['decoration'] = name['decoration']
+                prop_name['full_name'] = " ".join([prop_name['full_name'], prop_name['decoration']])
+
         elif name['name_category'] == 'LIMITED COMPANY OR PUBLIC LIMITED COMPANY':
             prop_name['full_name'] = name['non_private_individual_name']
-            prop_type = 'Non-Private'
+            prop_type = 'Non-Private'  # TODO: don't really need non-PI names for April...
         # Have seen example with no category
     elif 'non_private_individual_name' in name:
         prop_name['full_name'] = name['non_private_individual_name']
