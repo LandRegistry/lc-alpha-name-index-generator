@@ -47,7 +47,6 @@ class TestWorking:
         response = self.app.get("/health")
         assert response.status_code == 200
 
-
     @mock_kombu
     @mock.patch('requests.post', return_value=FakeResponse(status_code=201))
     def test_simple_proprietor_conversion(self, mock_post, mock_consumer, mock_exchange, mock_declare, mock_connection):

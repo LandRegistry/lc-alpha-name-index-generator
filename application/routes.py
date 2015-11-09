@@ -32,10 +32,7 @@ def healthcheck():
     }
 
     logging.info('Enumerate Threads')
-    for t in threading.enumerate():
-        logging.info(t.name)
-
-    threads = [t for t in threading.enumerate() if t.name == 'name-listener']
+    threads = [thread for thread in threading.enumerate() if thread.name == 'name-listener']
     alive = "Alive" if (len(threads) > 0 and threads[0].is_alive()) else "Failed"
     result['dependencies']['listener-thread'] = alive
 
